@@ -1,126 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Articles — The Verdict on AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --green:#007A4D;--green-dark:#005c3a;--green-light:#e6f4ed;
-  --gold:#C49A00;--gold-light:#fdf8e1;
-  --ink:#0f0f0f;--ink-soft:#3a3530;
-  --paper:#f6f1e9;--paper-dark:#ede7db;
-  --muted:#8a8070;--rule:#d9d2c5;--navy:#1a3a5c;
-  --font-display:'Playfair Display',Georgia,serif;
-  --font-body:'DM Sans',sans-serif;
-  --font-mono:'DM Mono',monospace;
+--green:#007A4D;--green-dark:#005c3a;--green-light:#e6f4ed;
+--gold:#C49A00;--gold-light:#fdf8e1;
+--ink:#0f0f0f;--ink-soft:#3a3530;
+--paper:#f6f1e9;--paper-dark:#ede7db;
+--muted:#8a8070;--rule:#d9d2c5;--navy:#1a3a5c;
+--font-display:'Playfair Display',Georgia,serif;
+--font-body:'DM Sans',sans-serif;
+--font-mono:'DM Mono',monospace;
 }
-html{scroll-behavior:smooth;}
-body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-weight:300;-webkit-font-smoothing:antialiased;}
-a{color:inherit;text-decoration:none;}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);padding-top:6px;}
+a{text-decoration:none;color:inherit;}
 
-/* FLAG + HEADER */
-.flag-strip{height:6px;background:linear-gradient(90deg,#007A4D 0 20%,#FFB612 20% 40%,#000 40% 60%,#DE3831 60% 80%,#002395 80% 100%);position:fixed;top:0;left:0;right:0;z-index:1000;}
-.site-header{position:sticky;top:6px;background:var(--paper);border-bottom:3px solid var(--ink);z-index:999;}
-.header-top{display:flex;align-items:center;justify-content:space-between;padding:14px 48px 10px;border-bottom:1px solid var(--rule);}
-.site-tagline{font-family:var(--font-mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
-.header-sa-badge{font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;background:var(--green);color:white;padding:4px 12px;}
-.site-name-wrap{text-align:center;padding:16px 48px 10px;}
-.site-name{font-family:var(--font-display);font-size:54px;font-weight:900;letter-spacing:-0.02em;line-height:1;color:var(--ink);}
-.site-name span{color:var(--green);}
+.flag-strip{position:fixed;top:0;left:0;width:100%;height:6px;display:flex;z-index:1000;}
+.flag-strip span{flex:1;}
+.flag-strip span:nth-child(1){background:#007A4D;}
+.flag-strip span:nth-child(2){background:#C49A00;}
+.flag-strip span:nth-child(3){background:#000;}
+.flag-strip span:nth-child(4){background:#C8102E;}
+.flag-strip span:nth-child(5){background:#003DA5;}
+
+.site-header{position:sticky;top:6px;background:var(--paper);border-bottom:1px solid var(--rule);z-index:999;}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:16px 48px 0;}
+.site-name-wrap .site-name{font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:0.01em;}
+.site-name-wrap .site-name .verdict{color:var(--green);}
+.header-tagline{font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-top:2px;}
 .site-nav{display:flex;justify-content:center;gap:40px;padding:10px 48px 14px;}
 .site-nav a{font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);transition:color 0.2s;}
 .site-nav a:hover,.site-nav a.active{color:var(--green);border-bottom:2px solid var(--green);padding-bottom:2px;}
 
-/* TICKER */
-.ticker{background:var(--ink);padding:9px 0;overflow:hidden;border-bottom:3px solid var(--gold);}
-.ticker-track{display:flex;gap:64px;white-space:nowrap;animation:scroll-ticker 35s linear infinite;}
-.ticker-item{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(246,241,233,0.85);flex-shrink:0;display:flex;align-items:center;gap:10px;}
-.ticker-item::before{content:'⚖';color:var(--gold);}
-@keyframes scroll-ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker{background:#0f0f0f;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);padding:8px 0;overflow:hidden;white-space:nowrap;}
+.ticker-track{display:inline-flex;animation:ticker 40s linear infinite;}
+.ticker-item{font-family:var(--font-mono);font-size:11px;color:#e8e0d0;letter-spacing:0.12em;padding:0 48px;}
+.ticker-item::before{content:"◆ ";color:var(--gold);}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
-/* PAGE HERO */
-.page-hero{background:var(--navy);padding:64px 48px 52px;border-bottom:3px solid var(--ink);position:relative;overflow:hidden;}
-.page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(246,241,233,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(246,241,233,0.03) 1px,transparent 1px);background-size:44px 44px;}
-.page-hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:2;}
-.page-hero-label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
-.page-hero-title{font-family:var(--font-display);font-size:52px;font-weight:900;letter-spacing:-0.02em;color:var(--paper);line-height:1.05;margin-bottom:16px;}
-.page-hero-sub{font-size:17px;line-height:1.7;color:rgba(246,241,233,0.65);max-width:560px;}
+.articles-header{max-width:960px;margin:64px auto 48px;padding:0 48px;}
+.articles-header h1{font-family:var(--font-display);font-size:42px;font-weight:700;margin-bottom:12px;}
+.articles-header p{font-size:16px;color:var(--muted);}
 
-/* ARTICLES SECTION */
-.articles-section{max-width:1100px;margin:0 auto;padding:64px 48px;}
-.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px;padding-bottom:16px;border-bottom:3px solid var(--ink);}
-.section-title{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink);}
-.section-count{font-family:var(--font-mono);font-size:10px;letter-spacing:0.2em;color:var(--muted);}
+.articles-grid{max-width:960px;margin:0 auto;padding:0 48px 80px;display:grid;grid-template-columns:1fr 1fr;gap:32px;}
 
-/* FEATURED ARTICLE (first card, large) */
-.article-card-featured{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--ink);margin-bottom:40px;background:white;transition:transform 0.2s,box-shadow 0.2s;}
-.article-card-featured:hover{transform:translateY(-3px);box-shadow:6px 6px 0 var(--ink);}
-.featured-image-panel{background:var(--navy);min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;padding:36px;position:relative;overflow:hidden;}
-.featured-image-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(246,241,233,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(246,241,233,0.04) 1px,transparent 1px);background-size:32px 32px;}
-.featured-image-accent{position:absolute;top:0;left:0;right:0;height:4px;background:var(--green);}
-.featured-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;position:relative;z-index:1;}
-.featured-quote{font-family:var(--font-display);font-size:22px;font-style:italic;line-height:1.4;color:var(--paper);position:relative;z-index:1;}
-.featured-content{padding:36px;display:flex;flex-direction:column;justify-content:space-between;}
-.featured-top{}
-.category-pill{display:inline-block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.25em;text-transform:uppercase;background:var(--green);color:white;padding:4px 12px;margin-bottom:18px;}
-.category-pill.alert{background:#c0392b;}
-.article-card-featured .card-title{font-family:var(--font-display);font-size:28px;font-weight:900;line-height:1.15;letter-spacing:-0.01em;color:var(--ink);margin-bottom:14px;}
-.article-card-featured .card-excerpt{font-size:15px;line-height:1.75;color:var(--ink-soft);margin-bottom:24px;}
-.card-meta{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;}
-.meta-dot{color:var(--rule);}
-.read-link{font-family:var(--font-mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid var(--green);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;}
-.read-link:hover{color:var(--green-dark);border-color:var(--green-dark);}
+.article-card{background:#fff;border:1px solid var(--rule);border-radius:4px;overflow:hidden;transition:box-shadow 0.2s;}
+.article-card:hover{box-shadow:0 4px 24px rgba(0,0,0,0.08);}
+.article-card-body{padding:32px;}
+.category-pill{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin-bottom:16px;background:var(--green-light);color:var(--green);}
+.category-pill.alert{background:#fef0f0;color:#c0392b;}
+.article-card h2{font-family:var(--font-display);font-size:22px;font-weight:700;line-height:1.3;margin-bottom:12px;}
+.article-card p{font-size:14px;color:var(--ink-soft);line-height:1.7;margin-bottom:20px;}
+.article-meta{font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.1em;margin-bottom:20px;}
+.read-link{font-family:var(--font-mono);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);border-bottom:1px solid var(--green);padding-bottom:2px;}
 
-/* STANDARD ARTICLE CARDS GRID */
-.articles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;}
-.article-card{border:2px solid var(--ink);background:white;display:flex;flex-direction:column;transition:transform 0.2s,box-shadow 0.2s;}
-.article-card:hover{transform:translateY(-3px);box-shadow:5px 5px 0 var(--ink);}
-.card-top-bar{height:4px;background:var(--navy);}
-.card-top-bar.green{background:var(--green);}
-.card-top-bar.alert{background:#c0392b;}
-.card-body{padding:28px;flex:1;display:flex;flex-direction:column;}
-.card-body .category-pill{margin-bottom:14px;}
-.article-card .card-title{font-family:var(--font-display);font-size:21px;font-weight:900;line-height:1.2;letter-spacing:-0.01em;color:var(--ink);margin-bottom:12px;}
-.article-card .card-excerpt{font-size:14px;line-height:1.75;color:var(--ink-soft);margin-bottom:20px;flex:1;}
-.card-footer{padding:0 28px 24px;display:flex;align-items:center;justify-content:space-between;}
-.card-footer .card-meta{margin-bottom:0;}
+.coming-soon-card{background:var(--paper-dark);border:1px dashed var(--rule);border-radius:4px;padding:32px;display:flex;flex-direction:column;justify-content:center;}
+.coming-soon-card .label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.coming-soon-card h2{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--ink-soft);line-height:1.3;}
 
-/* COMING SOON CARD */
-.article-card.coming-soon{opacity:0.65;cursor:default;}
-.article-card.coming-soon:hover{transform:none;box-shadow:none;}
-.coming-soon-badge{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;background:var(--paper-dark);color:var(--muted);padding:3px 10px;border:1px solid var(--rule);}
+.site-footer{background:var(--ink);color:#c8c0b4;padding:48px 48px 24px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px;}
+.footer-brand .footer-logo{font-family:var(--font-display);font-size:20px;color:#fff;margin-bottom:8px;}
+.footer-brand .footer-logo span{color:var(--green);}
+.footer-brand p{font-size:13px;line-height:1.6;}
+.footer-col h4{font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:8px;}
+.footer-col ul li a{font-size:13px;color:#c8c0b4;transition:color 0.2s;}
+.footer-col ul li a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid #2a2a2a;padding-top:24px;display:flex;justify-content:space-between;align-items:center;}
+.footer-bottom p{font-size:12px;}
+.footer-bottom .footer-legal{display:flex;gap:24px;}
+.footer-bottom .footer-legal a{font-size:12px;color:#8a8070;}
+</style>
+</head>
+<body>
+<div class="flag-strip"><span></span><span></span><span></span><span></span><span></span></div>
 
-/* NEWSLETTER SECTION */
-.newsletter-section{background:var(--green);padding:72px 48px;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);}
-.newsletter-inner{max-width:640px;margin:0 auto;text-align:center;}
-.nl-eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:16px;}
-.nl-title{font-family:var(--font-display);font-size:38px;font-weight:900;color:white;line-height:1.1;margin-bottom:14px;}
-.nl-sub{font-size:16px;line-height:1.7;color:rgba(255,255,255,0.8);margin-bottom:32px;}
-.nl-embed{background:rgba(0,0,0,0.12);padding:28px;border-top:3px solid white;}
+<header class="site-header">
+  <div class="header-top">
+    <a href="/" class="site-name-wrap">
+      <div class="site-name">The <span class="verdict">Verdict</span> on AI</div>
+      <div class="header-tagline">AI · Law · South Africa</div>
+    </a>
+  </div>
+  <nav class="site-nav">
+    <a href="/">Home</a>
+    <a href="/articles.html" class="active">Articles</a>
+    <a href="/about.html">About</a>
+    <a href="/#newsletter">Newsletter</a>
+  </nav>
+</header>
 
-/* FOOTER */
-.site-footer{background:var(--ink);color:white;padding:56px 48px 32px;border-top:4px solid var(--green);}
-.footer-grid{max-width:1200px;margin:0 auto 40px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;}
-.footer-brand{font-family:var(--font-display);font-size:30px;font-weight:900;margin-bottom:12px;}
-.footer-brand span{color:var(--gold);}
-.footer-desc{font-size:13px;line-height:1.7;color:rgba(246,241,233,0.5);margin-bottom:16px;}
-.footer-sa{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);}
-.footer-col h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(246,241,233,0.35);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(246,241,233,0.1);}
-.footer-col a{display:block;font-size:13px;color:rgba(246,241,233,0.65);margin-bottom:10px;transition:color 0.2s;}
-.footer-col a:hover{color:var(--gold);}
-.footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid rgba(246,241,233,0.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
-.footer-copy{font-family:var(--font-mono);font-size:10px;color:rgba(246,241,233,0.3);}
-.footer-disclaimer{font-size:11px;color:rgba(246,241,233,0.25);max-width:420px;text-align:right;line-height:1.5;}
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Mavundla v MEC: 7 of 9 AI Citations Were Fabricated — SA Courts Have Zero Tolerance</span>
+    <span class="ticker-item">LPC to Integrate AI Competence Into CPD Requirements</span>
+    <span class="ticker-item">ENS Africa Rolls Out Harvey AI Firm-Wide from May 2025</span>
+    <span class="ticker-item">POPIA and AI Tools: Is Your Client Data at Risk?</span>
+    <span class="ticker-item">Adjunct AI: The SA-Built Legal Research Tool You Need to Know</span>
+    <span class="ticker-item">Mavundla v MEC: 7 of 9 AI Citations Were Fabricated — SA Courts Have Zero Tolerance</span>
+    <span class="ticker-item">LPC to Integrate AI Competence Into CPD Requirements</span>
+    <span class="ticker-item">ENS Africa Rolls Out Harvey AI Firm-Wide from May 2025</span>
+    <span class="ticker-item">POPIA and AI Tools: Is Your Client Data at Risk?</span>
+    <span class="ticker-item">Adjunct AI: The SA-Built Legal Research Tool You Need to Know</span>
+  </div>
+</div>
 
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.fade-up{animation:fadeUp 0.55s ease both;}
-.fade-up-1{animation-delay:0.1s}.fade-up-2{animation-delay:0.22s}.fade-up-3{animation-delay:0.34s}
+<main>
+  <div class="articles-header">
+    <h1>All Articles</h1>
+    <p>Analysis, case law, and practical guidance on AI in South African legal practice.</p>
+  </div>
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  .site-name{font-size:36px;}
-  .header-top,.site-nav,.site-name-wra
+  <div class="articles-grid">
+    <a href="/article-1.html" class="article-card">
+      <div class="article-card-body">
+        <span class="category-pill">Featured Essay</span>
+        <h2>AI Won't Replace South African Lawyers. Unprepared Ones Will Lose.</h2>
+        <p>The profession isn't under threat from AI — it's under threat from attorneys who refuse to understand it. Here's what the shift actually looks like on the ground.</p>
+        <div class="article-meta">8 March 2026 · 8 min read</div>
+        <span class="read-link">Read Article →</span>
+      </div>
+    </a>
+
+    <a href="/article-mavundla.html" class="article-card">
+      <div class="article-card-body">
+        <span class="category-pill alert">SA Case Law Alert</span>
+        <h2>Mavundla v MEC: The Case Every South African Attorney Must Study Before Using AI</h2>
+        <p>Seven of nine AI-generated citations were fabricated. The court's response was unambiguous. This case sets a critical precedent for AI use in SA litigation.</p>
+        <div class="article-meta">8 March 2026 · 7 min read</div>
+        <span class="read-link">Read Article →</span>
+      </div>
+    </a>
+
+    <div class="coming-soon-card">
+      <div class="label">Coming Soon</div>
+      <h2>Uploading Client Documents to AI Tools? You May Already Be Violating POPIA.</h2>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">The <span>Verdict</span> on AI</div>
+      <p>Helping South African attorneys navigate the AI revolution — practically, ethically, and confidently.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/articles.html">Articles</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/#newsletter">Newsletter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/mphoentle-ndaba-739066b2" target="_blank">LinkedIn</a></li>
+        <li><a href="mailto:mphoentle.ndaba@gmail.com">Email</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 The Verdict on AI. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Disclaimer</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10bfa5a53fa62b09fe1fd0a2b36d" type="text/javascript"></script>
+<script>fetch("https://assets.mailerlite.com/jsonp/1551036/forms/154550674545973340/takel")</script>
+</body>
+</html>
