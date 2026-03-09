@@ -20,7 +20,6 @@
 }
 body{background:var(--paper);color:var(--ink);font-family:var(--font-body);padding-top:6px;}
 a{text-decoration:none;color:inherit;}
-
 .flag-strip{position:fixed;top:0;left:0;width:100%;height:6px;display:flex;z-index:1000;}
 .flag-strip span{flex:1;}
 .flag-strip span:nth-child(1){background:#007A4D;}
@@ -28,7 +27,6 @@ a{text-decoration:none;color:inherit;}
 .flag-strip span:nth-child(3){background:#000;}
 .flag-strip span:nth-child(4){background:#C8102E;}
 .flag-strip span:nth-child(5){background:#003DA5;}
-
 .site-header{position:sticky;top:6px;background:var(--paper);border-bottom:1px solid var(--rule);z-index:999;}
 .header-top{display:flex;align-items:center;justify-content:space-between;padding:16px 48px 0;}
 .site-name-wrap .site-name{font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:0.01em;}
@@ -37,27 +35,22 @@ a{text-decoration:none;color:inherit;}
 .site-nav{display:flex;justify-content:center;gap:40px;padding:10px 48px 14px;}
 .site-nav a{font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);transition:color 0.2s;}
 .site-nav a:hover,.site-nav a.active{color:var(--green);border-bottom:2px solid var(--green);padding-bottom:2px;}
-
 .ticker{background:#0f0f0f;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);padding:8px 0;overflow:hidden;white-space:nowrap;}
 .ticker-track{display:inline-flex;animation:ticker 40s linear infinite;}
 .ticker-item{font-family:var(--font-mono);font-size:11px;color:#e8e0d0;letter-spacing:0.12em;padding:0 48px;}
 .ticker-item::before{content:"◆ ";color:var(--gold);}
 @keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-
 .about-hero{max-width:860px;margin:64px auto 0;padding:0 48px;}
 .about-hero h1{font-family:var(--font-display);font-size:42px;font-weight:700;line-height:1.15;margin-bottom:16px;}
 .about-hero .lead{font-size:18px;color:var(--ink-soft);line-height:1.7;margin-bottom:48px;}
-
 .about-body{max-width:860px;margin:0 auto;padding:0 48px 80px;}
 .about-body p{font-size:16px;line-height:1.8;color:var(--ink-soft);margin-bottom:24px;}
 .about-body h2{font-family:var(--font-display);font-size:26px;font-weight:700;margin:48px 0 16px;}
-
 .about-profile{display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start;background:var(--paper-dark);border:1px solid var(--rule);border-radius:4px;padding:40px;margin-bottom:48px;}
 .about-profile img{width:180px;height:180px;object-fit:cover;border-radius:50%;border:3px solid var(--green);}
 .about-profile-text h2{font-family:var(--font-display);font-size:28px;margin-bottom:4px;}
 .about-profile-text .role{font-family:var(--font-mono);font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);margin-bottom:16px;}
 .about-profile-text p{font-size:15px;line-height:1.75;color:var(--ink-soft);}
-
 .site-footer{background:var(--ink);color:#c8c0b4;padding:48px 48px 24px;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px;}
 .footer-brand .footer-logo{font-family:var(--font-display);font-size:20px;color:#fff;margin-bottom:8px;}
@@ -75,4 +68,100 @@ a{text-decoration:none;color:inherit;}
 </style>
 </head>
 <body>
-<div class="flag-strip"><span></span><span></span><span></span><span></span><span></span>
+<div class="flag-strip"><span></span><span></span><span></span><span></span><span></span></div>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="/" class="site-name-wrap">
+      <div class="site-name">The <span class="verdict">Verdict</span> on AI</div>
+      <div class="header-tagline">AI · Law · South Africa</div>
+    </a>
+  </div>
+  <nav class="site-nav">
+    <a href="/">Home</a>
+    <a href="/articles.html">Articles</a>
+    <a href="/about.html" class="active">About</a>
+    <a href="/#newsletter">Newsletter</a>
+  </nav>
+</header>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Mavundla v MEC: 7 of 9 AI Citations Were Fabricated — SA Courts Have Zero Tolerance</span>
+    <span class="ticker-item">LPC to Integrate AI Competence Into CPD Requirements</span>
+    <span class="ticker-item">ENS Africa Rolls Out Harvey AI Firm-Wide from May 2025</span>
+    <span class="ticker-item">POPIA and AI Tools: Is Your Client Data at Risk?</span>
+    <span class="ticker-item">Adjunct AI: The SA-Built Legal Research Tool You Need to Know</span>
+    <span class="ticker-item">Mavundla v MEC: 7 of 9 AI Citations Were Fabricated — SA Courts Have Zero Tolerance</span>
+    <span class="ticker-item">LPC to Integrate AI Competence Into CPD Requirements</span>
+    <span class="ticker-item">ENS Africa Rolls Out Harvey AI Firm-Wide from May 2025</span>
+    <span class="ticker-item">POPIA and AI Tools: Is Your Client Data at Risk?</span>
+    <span class="ticker-item">Adjunct AI: The SA-Built Legal Research Tool You Need to Know</span>
+  </div>
+</div>
+
+<main>
+  <div class="about-hero">
+    <h1>About The Verdict on AI</h1>
+    <p class="lead">A platform for South African attorneys navigating the AI revolution — practical, honest, and grounded in the realities of our legal profession.</p>
+  </div>
+
+  <div class="about-body">
+    <div class="about-profile">
+      <img src="/headshot_2.png" alt="Mphoentle Ndaba">
+      <div class="about-profile-text">
+        <h2>Mphoentle Ndaba</h2>
+        <div class="role">Attorney · Corporate &amp; Commercial · AI Practitioner</div>
+        <p>I've spent years practising law across two continents — including four years in the US legal field, where I watched AI debut and begin reshaping the profession firsthand. One thing has become clear: AI is no longer the future — it's here.</p>
+        <p>The Verdict on AI is my platform to help attorneys understand what that means for our profession. I break down judgments, AI tools, ethical obligations, and regulatory updates in a way that's practical, actionable, and relevant to South African law. My goal? To make sure lawyers don't just keep up — they stay ahead.</p>
+      </div>
+    </div>
+
+    <h2>Why This Platform Exists</h2>
+    <p>South African lawyers are facing a rapidly shifting landscape. AI tools are being adopted by firms of all sizes, courts are already encountering AI-related misconduct, and regulatory bodies are beginning to respond. Yet the conversation in SA legal circles often lags behind what's actually happening on the ground.</p>
+    <p>The Verdict on AI exists to close that gap. Every article is written with a practising attorney in mind — someone who needs to understand not just what AI is doing, but what it means for their practice, their clients, and their professional obligations.</p>
+
+    <h2>What You'll Find Here</h2>
+    <p>Case law analysis of AI-related judgments from SA and abroad. Practical breakdowns of AI tools used in legal practice. Guidance on POPIA compliance, ethical obligations, and risk management. Updates from the LPC, LSSA, and other regulatory bodies.</p>
+
+    <h2>Get in Touch</h2>
+    <p>Have a topic you'd like covered? A case worth analysing? Reach out at <a href="mailto:mphoentle.ndaba@gmail.com" style="color:var(--green);">mphoentle.ndaba@gmail.com</a> or connect on <a href="https://www.linkedin.com/in/mphoentle-ndaba-739066b2" target="_blank" style="color:var(--green);">LinkedIn</a>.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">The <span>Verdict</span> on AI</div>
+      <p>Helping South African attorneys navigate the AI revolution — practically, ethically, and confidently.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/articles.html">Articles</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/#newsletter">Newsletter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/mphoentle-ndaba-739066b2" target="_blank">LinkedIn</a></li>
+        <li><a href="mailto:mphoentle.ndaba@gmail.com">Email</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 The Verdict on AI. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Disclaimer</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10bfa5a53fa62b09fe1fd0a2b36d" type="text/javascript"></script>
+<script>fetch("https://assets.mailerlite.com/jsonp/1551036/forms/154550674545973340/takel")</script>
+</body>
+</html>
